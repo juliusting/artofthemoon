@@ -1,14 +1,14 @@
 <template>
-	<section>
+	<section v-inview:enter="audioStart" v-inview:leave="audioEnd">
 		<div class="container">
-		<div class="JKR">
-			<div style="margin-left: auto; width: 10em">
-				<img src="@/assets/presidentspeech.png" alt="president" class="speech">
+			<div class="JKR">
+				<div style="margin-left: auto; width: 10em">
+					<img src="@/assets/presidentspeech.png" alt="president" class="speech">
+				</div>
 			</div>
-		</div>
-		<div class="s" data-aos="zoom-in">
-			<p>"But why, some say, the moon?"</p>
-		</div>
+			<div class="s" data-aos="zoom-in">
+				<p>"But why, some say, the moon?"</p>
+			</div>
 		</div>
 	</section>
 </template>
@@ -18,12 +18,18 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 export default {
 	name: "apollo11Day1",
-	components: {},
+	inject: ['$util'],
 	data () {
 		return {
 		}
 	},
 	methods: {
+		audioStart () {
+			this.$util.playAudio('cut_jfk')
+		},
+		audioEnd() {
+			this.$util.stopAudio('cut_jfk')
+		}
 	},
 	created() {
 		AOS.init()
