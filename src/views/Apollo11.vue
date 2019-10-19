@@ -43,6 +43,7 @@ export default {
 		return {
 			$util: {
 				async getSpeech (callback) {
+					console.log('ready speech')
 					return new Promise ((resolve, reject) => {
 						if (this.SpeechRecognition) return
 
@@ -73,13 +74,18 @@ export default {
 					})
 				},
 				getSpeechDestroy () {
-					this.SpeechRecognition.stop()
+					console.log('speech destroyed')
+					if (this.SpeechRecognition) {
+						this.SpeechRecognition.stop()
+					}
 					this.SpeechRecognition = null
 				},
 				playAudio: filename => {
+					console.log('playaudio', filename)
 					this.$refs[filename][0].play()
 				},
 				stopAudio: filename => {
+					console.log('destroyaudio', filename)
 					this.$refs[filename][0].pause()
 					this.$refs[filename][0].currentTime = 0
 				}
@@ -101,7 +107,13 @@ export default {
 	methods: {
 	},
 	created() {
-
+		navigator.mediaDevices.getUserMedia({ audio: true })
+		.then(function(stream) {
+		console.log('You let me use your mic!')
+		})
+		.catch(function(err) {
+		console.log('No mic for you!')
+		});
 	}
 }
 </script>
