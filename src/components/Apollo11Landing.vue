@@ -39,16 +39,7 @@ export default {
 <style lang="scss" scoped>
 section {
 	background-color: black;
-}
-
-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: black;
-  z-index: -3;
+  z-index: 1;
 }
 
 p {

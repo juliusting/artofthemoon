@@ -7,6 +7,8 @@
 		<Test/>
 		<Apollo11Landing/>
 		<Apollo11Day1/>
+		<Apollo11Day1_1/>
+		<Apollo11Day1_2/>
 		<Apollo11Day2/>
 		<Apollo11Day3/>
 		<Apollo11Day4/>
@@ -18,6 +20,8 @@ import { debounce } from 'lodash'
 
 import Apollo11Landing from '@/components/Apollo11Landing'
 import Apollo11Day1 from '@/components/Apollo11Day1'
+import Apollo11Day1_1 from '@/components/Apollo11Day1_1'
+import Apollo11Day1_2 from '@/components/Apollo11Day1_2'
 import Apollo11Day2 from '@/components/Apollo11Day2'
 import Apollo11Day3 from '@/components/Apollo11Day3'
 import Apollo11Day4 from '@/components/Apollo11Day4'
@@ -28,6 +32,8 @@ export default {
 	components: {
 		Apollo11Landing,
 		Apollo11Day1,
+		Apollo11Day1_1,
+		Apollo11Day1_2,
 		Apollo11Day2,
 		Apollo11Day3,
 		Apollo11Day4,
@@ -38,7 +44,6 @@ export default {
 			$util: {
 				async getSpeech (callback) {
 					return new Promise ((resolve, reject) => {
-						console.log('init')
 						if (this.SpeechRecognition) return
 
 						window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition
@@ -86,12 +91,11 @@ export default {
 			SpeechRecognition: null,
 			audioSources: [
 				'near',
-				'cut jfk'
+				'cut_jfk'
 			]
 		}
 	},
 	mounted () {
-		console.log(this.$refs)
 	},
 	methods: {
 	},
