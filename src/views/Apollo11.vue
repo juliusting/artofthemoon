@@ -4,14 +4,21 @@
 			<source :src="require(`@/assets/audio/${source}.ogg`)" type="audio/ogg">
 			<source :src="require(`@/assets/audio/${source}.mp3`)" type="audio/mpeg">
 		</audio>
-		<Test/>
+		<!--Test/-->
 		<Apollo11Landing/>
+		<div class="separator"></div>
 		<Apollo11Day1/>
+		<div class="separator"></div>
 		<Apollo11Day1_1/>
+		<div class="separator"></div>
 		<Apollo11Day1_2/>
+		<div class="separator"></div>
 		<Apollo11Day2/>
+		<div class="separator"></div>
 		<Apollo11Day3/>
+		<div class="separator"></div>
 		<Apollo11Day4/>
+		<div class="separator"></div>
 		<Apollo11Success/>
 	</main>
 </template>
@@ -46,7 +53,6 @@ export default {
 		return {
 			$util: {
 				async getSpeech (callback) {
-					console.log('ready speech')
 					return new Promise ((resolve, reject) => {
 						if (this.SpeechRecognition) return
 
@@ -77,18 +83,15 @@ export default {
 					})
 				},
 				getSpeechDestroy () {
-					console.log('speech destroyed')
 					if (this.SpeechRecognition) {
 						this.SpeechRecognition.stop()
 					}
 					this.SpeechRecognition = null
 				},
 				playAudio: filename => {
-					console.log('playaudio', filename)
 					this.$refs[filename][0].play()
 				},
 				stopAudio: filename => {
-					console.log('destroyaudio', filename)
 					this.$refs[filename][0].pause()
 					this.$refs[filename][0].currentTime = 0
 				}
@@ -101,7 +104,8 @@ export default {
 			audioSources: [
 				'near',
 				'cut_jfk',
-				'blast_off'
+				'blast_off',
+				'eagle'
 			]
 		}
 	},
@@ -110,15 +114,6 @@ export default {
 	methods: {
 	},
 	created() {
-		/*
-		navigator.mediaDevices.getUserMedia({ audio: true })
-		.then(function(stream) {
-		console.log('You let me use your mic!')
-		})
-		.catch(function(err) {
-		console.log('No mic for you!')
-		});
-		*/
 	}
 }
 </script>
@@ -133,19 +128,11 @@ main {
 		position: relative;
 		scroll-snap-align: start;
 		height: 100vh;
-
-		&:not(:last-of-type):after {
-			content: '';
-			position: relative;
-			display: block;
-			height: 5em;
-			width: 100%;
-			background-color: black
-		}
 	}
 }
 
 .separator {
+	background-color: black;
 	height: 5em;
 	width: 100%;
 }

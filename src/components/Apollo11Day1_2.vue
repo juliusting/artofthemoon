@@ -17,16 +17,13 @@ export default {
 	methods: {
         callbackBlastOff (resolve, reject, transcript) {
 			/*
-            console.log(transcript)
             if (transcript.toLowerCase().trim().indexOf('blast off') > -1) {
-				console.log('success')
                 this.$util.getSpeechDestroy()
                 resolve()
             } else {
-                console.log('please try again')
+                console.warn('please try again')
 			}
 			*/
-			console.log('hacky way, just received any sound')
 			this.$util.getSpeechDestroy()
 			resolve(true)
 		},
