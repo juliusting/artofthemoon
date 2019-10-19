@@ -4,7 +4,7 @@
 
 <script>
 const bg = new Image();
-bg.src = require('../assets/logo.png');
+bg.src = require('../assets/3.4.earth.png');
 
 export default {
   name: "canvas",
@@ -15,9 +15,11 @@ export default {
   components: {},
   methods: {
     draw: function() {
+      this.windowWidth = window.innerWidth;
+      this.windowHeight = window.innerHeight;
       this.ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      this.ctx.drawImage(bg, window.innerWidth/2 - 250, window.innerHeight/2 - 250, 500, 500);
       
-      this.ctx.drawImage(bg, 0, 0, window.innerWidth, window.innerHeight);
 
       // accurate
       this.ctx.beginPath();
