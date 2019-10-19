@@ -1,5 +1,8 @@
 <template>
 	<section v-inview:leave="audioEnd">
+        <div class="blast">
+        <img src="@/assets/blast1.gif">
+        </div>
 	</section>
 </template>
 
@@ -43,10 +46,11 @@ export default {
 <style lang="scss" scoped>
 section {
 	background-color: black;
-	background-image: url('@/../../assets/blast1.gif');
+	background-image: url('@/../../assets/blast.jpg');
     background-size: cover;
 }
 
 .blast {
+    margin: 0em 0em 0em -57em;
 }
 </style>

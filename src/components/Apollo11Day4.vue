@@ -21,6 +21,8 @@ export default {
 
 <style lang="scss" scoped>
 section {
-	background-color: yellow;
+	background-color: black;
+	background-image: url('@/../../assets/manonmoon.jpg');
+	position: absolute;
 }
 </style>

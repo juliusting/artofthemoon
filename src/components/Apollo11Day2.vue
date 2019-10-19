@@ -22,5 +22,6 @@ export default {
 section {
 	background-color: black;
 	background-image: url('@/../../assets/3.4.earth.png');
+	padding: 50em 0em 0em 0em;
 }
 </style>
