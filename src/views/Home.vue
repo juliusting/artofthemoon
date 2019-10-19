@@ -1,33 +1,52 @@
 <template>
-  <div class="home">
-    <h1 class>hello</h1>
-    <canvas id="canvasScreen" width="100" height="100"></canvas>
-  </div>
+    <canvas 
+    ref='canvas'
+    width='windowWidth'
+    height='windowHeight'
+    ></canvas>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-var canvas = null;
 
 export default {
-  name: "home",
+  name: "canvas",
+  data: {
+    windowWidth: window.innerWidth,
+    windowHeight: window.innerHeight
+  },
   components: {
-    HelloWorld
   },
   methods: {
-    draw: function() {
-
-    }
+    draw: function() {}
   },
-  created() {
+  mounted() {
+    this.canvas = this.$refs.canvas;
+    this.ctx = this.$refs.canvas.getContext("2d");
+    this.canvas.width = document.body.clientWidth;
+    this.canvas.height = document.body.clientHeight;
+    
+    this.ctx.beginPath();
+    this.ctx.strokeStyle = "black";
+    this.ctx.rect(0, 0, 200, 200);
+    this.ctx.stroke();
 
+
+    this.ctx.beginPath();
+    this.ctx.fillStyle = "#000";
+    this.ctx.font = "20px Verdana";
+    this.ctx.fillText("Size: " + document.body.clientWidth + ", " + document.body.clientHeight, this.canvas.width /2, 20);
+    this.ctx.closePath();
+
+    
+    const bg = new Image();
+    bg.src = '../assets/bg.png';
+    this.ctx.drawImage(bg, 0, 0, 100, 100);
   }
 };
 </script>
 
 <style scoped>
-#canvasScreen {
+#canvas {
   position: fixed;
   top: 0;
 }
