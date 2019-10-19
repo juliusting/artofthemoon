@@ -21,6 +21,6 @@ export default {
 
 <style lang="scss" scoped>
 section {
-	background-color: black;
+	background-color: green;
 }
 </style>

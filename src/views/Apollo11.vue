@@ -1,6 +1,7 @@
 <template>
 	<main>
 		<!--Test/-->
+		<Apollo11Landing/>
 		<Apollo11Day1/>
 		<Apollo11Day2/>
 		<Apollo11Day3/>
@@ -9,6 +10,7 @@
 </template>
 
 <script>
+import Apollo11Landing from '@/components/Apollo11Landing'
 import Apollo11Day1 from '@/components/Apollo11Day1'
 import Apollo11Day2 from '@/components/Apollo11Day2'
 import Apollo11Day3 from '@/components/Apollo11Day3'
@@ -18,6 +20,7 @@ import Test from '@/components/Test'
 export default {
 	name: "apollo11",
 	components: {
+		Apollo11Landing,
 		Apollo11Day1,
 		Apollo11Day2,
 		Apollo11Day3,
