@@ -1,5 +1,7 @@
 <template>
-	<section>audio in view testing</section>
+	<section>
+		audio in view testing
+	</section>
 </template>
 
 <script>
@@ -12,7 +14,7 @@ export default {
 	},
 	methods: {
 	},
-	async created() {
+	mounted () {
 	}
 }
 </script>

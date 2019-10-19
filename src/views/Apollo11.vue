@@ -1,5 +1,9 @@
 <template>
 	<main>
+		<audio v-for="source in audioSources" :key="source" :ref="source" preload="auto">
+			<source :src="require(`@/assets/audio/${source}.ogg`)" type="audio/ogg">
+			<source :src="require(`@/assets/audio/${source}.mp3`)" type="audio/mpeg">
+		</audio>
 		<Test/>
 		<Apollo11Landing/>
 		<Apollo11Day1/>
@@ -66,14 +70,28 @@ export default {
 				getSpeechDestroy () {
 					this.SpeechRecognition.stop()
 					this.SpeechRecognition = null
+				},
+				playAudio: filename => {
+					this.$refs[filename][0].play()
+				},
+				stopAudio: filename => {
+					this.$refs[filename][0].pause()
+					this.$refs[filename][0].currentTime = 0
 				}
 			}
 		}
 	},
 	data () {
 		return {
-			SpeechRecognition: null
+			SpeechRecognition: null,
+			audioSources: [
+				'near',
+				'cut jfk'
+			]
 		}
+	},
+	mounted () {
+		console.log(this.$refs)
 	},
 	methods: {
 	},

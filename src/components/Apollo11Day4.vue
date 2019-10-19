@@ -5,7 +5,7 @@
 
 <script>
 export default {
-	name: "apollo11Day1",
+	name: "apollo11Day4",
 	components: {},
 	data () {
 		return {

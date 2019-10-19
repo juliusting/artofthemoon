@@ -4,7 +4,10 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 
+import Inview from 'vueinview'
+
 Vue.config.productionTip = false
+Vue.use(Inview)
 
 new Vue({
 	router,
