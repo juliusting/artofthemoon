@@ -107,6 +107,7 @@ export default {
 	methods: {
 	},
 	created() {
+		/*
 		navigator.mediaDevices.getUserMedia({ audio: true })
 		.then(function(stream) {
 		console.log('You let me use your mic!')
@@ -114,6 +115,7 @@ export default {
 		.catch(function(err) {
 		console.log('No mic for you!')
 		});
+		*/
 	}
 }
 </script>
@@ -128,6 +130,20 @@ main {
 		position: relative;
 		scroll-snap-align: start;
 		height: 100vh;
+
+		&:not(:last-of-type):after {
+			content: '';
+			position: relative;
+			display: block;
+			height: 5em;
+			width: 100%;
+			background-color: black
+		}
 	}
+}
+
+.separator {
+	height: 5em;
+	width: 100%;
 }
 </style>

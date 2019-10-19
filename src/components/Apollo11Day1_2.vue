@@ -26,6 +26,7 @@ export default {
                 console.log('please try again')
 			}
 			*/
+			console.log('hacky way, just received any sound')
 			this.$util.getSpeechDestroy()
 			resolve(true)
 		},
@@ -37,7 +38,7 @@ export default {
 			}
 		},
         audioEnd () {
-			// this.$util.stopAudio('blast_off')
+			this.$util.stopAudio('blast_off')
 			this.$util.getSpeechDestroy()
         }
     },
