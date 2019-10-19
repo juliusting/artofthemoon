@@ -56,5 +56,6 @@ section {
 }
 
 .blast {
+    margin: 0em 0em 0em -57em;
 }
 </style>

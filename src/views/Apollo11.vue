@@ -12,6 +12,7 @@
 		<Apollo11Day2/>
 		<Apollo11Day3/>
 		<Apollo11Day4/>
+		<Apollo11Success/>
 	</main>
 </template>
 
@@ -25,6 +26,7 @@ import Apollo11Day1_2 from '@/components/Apollo11Day1_2'
 import Apollo11Day2 from '@/components/Apollo11Day2'
 import Apollo11Day3 from '@/components/Apollo11Day3'
 import Apollo11Day4 from '@/components/Apollo11Day4'
+import Apollo11Success from '@/components/Apollo11Success'
 import Test from '@/components/Test'
 
 export default {
@@ -37,6 +39,7 @@ export default {
 		Apollo11Day2,
 		Apollo11Day3,
 		Apollo11Day4,
+		Apollo11Success,
 		Test
 	},
 	provide () {
