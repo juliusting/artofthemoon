@@ -5,10 +5,15 @@
 </template>
 
 <script>
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import 'normalize.css'
 
 export default {
-	name: 'App'
+	name: 'App',
+	created () {
+		AOS.init()
+	}
 }
 </script>
 

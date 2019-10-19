@@ -1,21 +1,17 @@
 <template>
-	<section v-inview:enter="audioStart" v-inview:leave="audioEnd">
-		<div class="container">
-			<div class="JKR">
-				<div style="margin-left: auto; width: 10em">
-					<img src="@/assets/presidentspeech.png" alt="president" class="speech">
-				</div>
+	<section v-inview:enter="onEnter" v-inview:leave="onLeave">
+		<div style="display: flex; position: absolute; height: 100%; width: 100%; overflow: hidden">
+			<div style="margin: auto 1em -2em auto; width: 23em">
+				<img src="@/assets/presidentspeech.png" alt="president" style="width: 100%">
 			</div>
-			<div class="s" data-aos="zoom-in">
-				<p>"But why, some say, the moon?"</p>
-			</div>
+		</div>
+		<div class="s" data-aos="zoom-in" data-aos-duration="1000">
+			<span>"But why, some say, the moon?"</span>
 		</div>
 	</section>
 </template>
 
 <script>
-import AOS from 'aos'
-import 'aos/dist/aos.css'
 export default {
 	name: "apollo11Day1",
 	inject: ['$util'],
@@ -24,50 +20,31 @@ export default {
 		}
 	},
 	methods: {
-		audioStart () {
+		onEnter () {
 			this.$util.playAudio('cut_jfk')
 		},
-		audioEnd() {
+		onLeave() {
 			this.$util.stopAudio('cut_jfk')
 		}
-	},
-	created() {
-		AOS.init()
 	}
 }
 </script>
 
 <style lang="scss" scoped>
 section {
-	padding: 0.01em 16px;
 	background-image: url('@/../../assets/stars3.png');
 	background-size: cover;
+	background-position: center;
 	background-color: black;
-}
-
-p {
-  margin: 0;
+	color: white;
 }
 
 .s {
-  color: white;
-  font-size: 5em;
-  margin: -7em 0em 0em 1em;
-  text-align-last: left;
-  transform: translateZ(0) scale(1);
-}
+	padding: 20vh 7em;
+	text-align: left;
 
-.speech {
-	width: 23em;
-	margin: 22em 0em 0em -12em;
-}
-
-.JKR {
-	display: flex;
-}
-
-[data-aos] {
-	transform: translateZ(0) scale(1);
-	transition-duration: 1s;
+	span {
+		font-size: 5em;
+	}
 }
 </style>

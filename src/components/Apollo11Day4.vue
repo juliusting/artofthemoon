@@ -38,7 +38,6 @@ export default {
 section {
 	background-color: black;
 	background-image: url('@/../../assets/images/eagle.gif');
-	// background-image: url('@/../../assets/manonmoon.jpg');
 	background-position: center;
 	background-size: cover;
 }

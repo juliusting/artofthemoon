@@ -14,9 +14,6 @@
 		<Apollo11Day1_2/>
 		<div class="separator"></div>
 		<Apollo11Day2/>
-		<div class="separator"></div>
-		<Apollo11Day3/>
-		<div class="separator"></div>
 		<Apollo11Day4/>
 		<div class="separator"></div>
 		<Apollo11Success/>
@@ -24,7 +21,7 @@
 </template>
 
 <script>
-import { debounce } from 'lodash'
+import { debounce, throttle } from 'lodash'
 
 import Apollo11Landing from '@/components/Apollo11Landing'
 import Apollo11Day1 from '@/components/Apollo11Day1'
@@ -66,7 +63,7 @@ export default {
 						this.SpeechRecognition.maxAlternatives = 10
 						this.SpeechRecognition.continuous = true
 
-						this.SpeechRecognition.onresult = debounce(event => {
+						this.SpeechRecognition.onresult = throttle(event => {
 							let interimTranscript = ''
 							for (let i = event.resultIndex, len = event.results.length; i < len; i++) {
 								let transcript = event.results[i][0].transcript
@@ -78,7 +75,8 @@ export default {
 							}
 
 							callback(resolve, reject, interimTranscript)
-						}, 1000)
+						}, 300, { leading: true, trailing: true })
+
 						this.SpeechRecognition.start()
 					})
 				},
@@ -128,12 +126,13 @@ main {
 		position: relative;
 		scroll-snap-align: start;
 		height: 100vh;
+		overflow: hidden;
 	}
 }
 
 .separator {
 	background-color: black;
-	height: 5em;
+	height: 30vh;
 	width: 100%;
 }
 </style>

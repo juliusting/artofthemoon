@@ -1,26 +1,29 @@
 <template>
 	<section>
-		<div class="content">
-		<div class="container1">
-			<div class="video">
-				<video autoplay="" muted="" loop="" id="mVideo" style="display:block;margin:auto" width="90%" height="90%">
-					<source src="https://storage.cloud.google.com/artofthemoon/moon.mp4" type="video/mp4">
-				</video>
-				<div class="video-desc">
-					<div class="title">
-					<p class="BigTitle">Apollo11</p>
-					<div class="desc">
-						<p>Based on real mission </p>
-						<p>in </p>
-						<p>1969</p>
-					</div>
-					</div>
+		<div class="video" data-aos="zoom-out" data-aos-delay="1000" data-aos-duration="15000" data-aos-easing="linear">
+			<video src="https://storage.cloud.google.com/artofthemoon/moon.mp4"></video>
+		</div>
+		<div class="hero">
+			<article style="opacity: 0">
+				<div class="arrow">
+					<img src="@/assets/down-arrow.svg" alt="down-arrow">
 				</div>
+			</article>
+
+			<div class="video-desc">
+				<h1 data-aos="fade-up" data-aos-duration="1000">Apollo11</h1>
+				<article data-aos="fade-zoom-in" data-aos-delay="1000" data-aos-duration="3000">
+					<div>Based on real mission</div>
+					<div>in</div>
+					<div>1969</div>
+				</article>
 			</div>
-		</div>
-		<div class="arrow">
-			<img src="@/assets/down-arrow.svg" alt="down-arrow" class="darrow">
-		</div>
+
+			<article data-aos="zoom-in" data-aos-delay="1500" data-aos-offset="0">
+				<div class="arrow">
+					<img src="@/assets/down-arrow.svg" alt="down-arrow">
+				</div>
+			</article>
 		</div>
 	</section>
 </template>
@@ -39,47 +42,67 @@ export default {
 <style lang="scss" scoped>
 section {
 	background-color: black;
-  z-index: 1;
+	color: white;
+
+	.video {
+		position: absolute;
+		display: flex;
+		height: 100%;
+		width: 100%;
+		z-index: 0;
+
+		video {
+			margin: auto;
+			width: 100%;
+			height: 80%;
+		}
+	}
+
+	.hero {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		width: 100%;
+
+		.video-desc {
+			margin: auto;
+
+			h1 {
+				margin: 0 0 .25em;
+				font-size: 8em;
+				font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+			}
+
+			article {
+				& > * {
+					font-family: 'Courier New', Courier, monospace;
+				}
+			}
+		}
+
+		.arrow {
+			margin: 2em auto;
+			width: 3em;
+
+			img {
+				position: relative;
+				width: 100%;
+				animation: bounce 3s infinite;
+			}
+		}
+	}
 }
 
-p {
-  color:white;
-  font-size:2em;
-  margin: 0.5em 0em 0em 0em;
-}
-
-.container1 {
-  padding: 0.01em 16px;
-}
-
-.BigTitle {
-  font-size: 8em;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  margin: 36% 0% 0% 0%;
-}
-
-.desc {
-  font-size: 0.8em;
-  font-family: 'Courier New', Courier, monospace;
-  height: 17em;
-}
-
-.video {
-  background-color: black;
-}
-
-.video-desc {
-  position: absolute;
-  top: 50%;
-  left: 31%;
-  margin: -20em 0em 0em 0em;
-}
-
-.darrow {
-  width: 40px;
-  position: relative;
-  animation: arrowmove 1.5s infinite;
-  animation-timing-function: ease;
-  margin: -3em 0em 1em 0em;
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {
+		transform: translateY(0);
+	}
+	40% {
+		transform: translateY(-30px);
+	}
+	60% {
+		transform: translateY(-15px);
+	}
 }
 </style>

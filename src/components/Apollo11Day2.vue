@@ -1,5 +1,12 @@
 <template>
-	<section ref="sceneDay2" v-inview:leave="onLeave">
+	<section ref="sceneDay2" v-inview:enter="onEnter" v-inview:leave="onLeave">
+		<div style="display: flex">
+			<div ref="earth" style="margin: 0 auto; position: relative">
+				<img src="@/assets/3.4.earth.png" style="width: 100%">
+			</div>
+		</div>
+
+		<div class="moon" style="position: absolute; height: 100%; width: 100%; top: 0"></div>
 	</section>
 </template>
 
@@ -9,7 +16,9 @@ export default {
 	inject: ['$util'],
 	data () {
 		return {
-			holdTimer: null
+			holdTimer: null,
+			width: 50,
+			top: '0em'
 		}
 	},
 	methods: {
@@ -23,17 +32,32 @@ export default {
 			if (this.holdTimer) clearTimeout(this.holdTimer)
 			this.holdTimer = null
 		},
+		onEnter () {
+			this.$util.playAudio('earth')
+		},
 		onLeave () {
 			this.$util.stopAudio('near')
+			this.$util.stopAudio('earth')
+		},
+		onScroll2 (event) {
+			let container = window.pageYOffset || document.documentElement.scrollTop
+			let inner = this.$refs.sceneDay2.offsetTop - this.$refs.sceneDay2.scrollHeight
+			this.$refs.earth.style.top = ((1/5 * inner / container - .15) * 150) + 'em'
+			this.$refs.earth.style.width = (((1/5 * inner / container) + .45)* 100) + '%'
+
 		}
 	},
 	mounted () {
 		this.$refs.sceneDay2.addEventListener('mousedown', this.setHoldTimer)
 		this.$refs.sceneDay2.addEventListener('mouseup', this.destroyHoldTimer)
+		document.body.onscroll = this.onScroll2
+		document.body.dispatchEvent(new CustomEvent('scroll'))
+
 	},
 	destroyed () {
-		this.$refs.sceneDay2.removeEventListener('mousedown', setHoldTimer)
-		this.$refs.sceneDay2.removeEventListener('mouseup', destroyHoldTimer)
+		this.$refs.sceneDay2.removeEventListener('mousedown', this.setHoldTimer)
+		this.$refs.sceneDay2.removeEventListener('mouseup', this.destroyHoldTimer)
+		document.body.onscroll = null
 	}
 
 }
@@ -42,7 +66,13 @@ export default {
 <style lang="scss" scoped>
 section {
 	background-color: black;
-	background-image: url('@/../../assets/3.4.earth.png');
-	padding: 50em 0em 0em 0em;
+	color: white;
+
+	.moon {
+		background-image: url('@/../../assets/moonsurface.png');
+		background-size: 100% 30%;
+		background-repeat: no-repeat;
+		background-position: bottom center;
+	}
 }
 </style>

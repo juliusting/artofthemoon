@@ -49,7 +49,7 @@ export default {
 section {
 	background-color: black;
 	background-image: url('https://storage.cloud.google.com/artofthemoon/blast1.gif');
-    background-size: cover;
+    background-size: 100% auto;
 }
 
 .blast {
