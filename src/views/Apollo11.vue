@@ -105,7 +105,9 @@ export default {
 				'near',
 				'cut_jfk',
 				'blast_off',
-				'eagle'
+				'eagle',
+				'total_crew',
+				'earth'
 			]
 		}
 	},

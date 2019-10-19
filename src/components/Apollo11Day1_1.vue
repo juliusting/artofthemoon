@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section v-inview:enter="audioStart" v-inview:leave="audioEnd">
         <div class="container">
 			<div class="name">
 				<p class="as2">Michael Collins - command module pilot.</p>
@@ -20,12 +20,19 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 export default {
 	name: "apollo11Day1-1",
+	inject: ['$util'],
 	components: {},
 	data () {
 		return {
 		}
 	},
 	methods: {
+		audioStart () {
+			this.$util.playAudio('total_crew')
+		},
+		audioEnd() {
+			this.$util.stopAudio('total_crew')
+		}
 	},
 	created() {
 		AOS.init()
