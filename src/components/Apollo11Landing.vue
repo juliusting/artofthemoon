@@ -1,38 +1,37 @@
 <template>
 	<section>
-        <div class="content">
-          <div class="container1">
-              <div class="video">
-                <video autoplay="" muted="" loop="" id="mVideo" style="display:block;margin:auto" width="90%" height="90%">
-                    <source src="@/assets/moon.mp4" type="video/mp4">
-                </video>
-                <div class="video-desc">
-                    <div class="title">
-                      <p class="BigTitle">Apollo11</p>
-                      <div class="desc">
-                          <p>Based on real mission </p>
-                          <p>in </p>
-                          <p>1969</p>
-                      </div>
-                    </div>
-                </div>
-              </div>
-          </div>
-          <div class="arrow">
-            <img src="@/assets/down-arrow.svg" alt="down-arrow" class="darrow">
-          </div>
-        </div>
+		<div class="content">
+		<div class="container1">
+			<div class="video">
+				<video autoplay="" muted="" loop="" id="mVideo" style="display:block;margin:auto" width="90%" height="90%">
+					<source src="@/assets/moon.mp4" type="video/mp4">
+				</video>
+				<div class="video-desc">
+					<div class="title">
+					<p class="BigTitle">Apollo11</p>
+					<div class="desc">
+						<p>Based on real mission </p>
+						<p>in </p>
+						<p>1969</p>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="arrow">
+			<img src="@/assets/down-arrow.svg" alt="down-arrow" class="darrow">
+		</div>
+		</div>
 	</section>
 </template>
 
 <script>
 export default {
-  name: "apollo11Landing",
-  data () {
-  },
-  components: {},
-  methods: {
-  }
+	name: "apollo11Landing",
+	data () {
+		return {
+		}
+	}
 };
 
 </script>
