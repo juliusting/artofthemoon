@@ -1,6 +1,6 @@
 <template>
 	<main>
-		<!--Test/-->
+		<Test/>
 		<Apollo11Landing/>
 		<Apollo11Day1/>
 		<Apollo11Day2/>
@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import { debounce } from 'lodash'
+
 import Apollo11Landing from '@/components/Apollo11Landing'
 import Apollo11Day1 from '@/components/Apollo11Day1'
 import Apollo11Day2 from '@/components/Apollo11Day2'
@@ -27,8 +29,50 @@ export default {
 		Apollo11Day4,
 		Test
 	},
+	provide () {
+		return {
+			$util: {
+				async getSpeech (callback) {
+					return new Promise ((resolve, reject) => {
+						console.log('init')
+						if (this.SpeechRecognition) return
+
+						window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition
+
+						let finalTranscript = ''
+
+						this.SpeechRecognition = new window.SpeechRecognition()
+						// recognition.lang = 'id-ID'
+						this.SpeechRecognition.interimResults = true
+						this.SpeechRecognition.maxAlternatives = 10
+						this.SpeechRecognition.continuous = true
+
+						this.SpeechRecognition.onresult = debounce(event => {
+							let interimTranscript = ''
+							for (let i = event.resultIndex, len = event.results.length; i < len; i++) {
+								let transcript = event.results[i][0].transcript
+								if (event.results[i].isFinal) {
+									finalTranscript += transcript
+								} else {
+									interimTranscript += transcript
+								}
+							}
+
+							callback(resolve, reject, interimTranscript)
+						}, 1000)
+						this.SpeechRecognition.start()
+					})
+				},
+				getSpeechDestroy () {
+					this.SpeechRecognition.stop()
+					this.SpeechRecognition = null
+				}
+			}
+		}
+	},
 	data () {
 		return {
+			SpeechRecognition: null
 		}
 	},
 	methods: {
