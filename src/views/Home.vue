@@ -5,7 +5,7 @@
       <div class="container1">
         <div class="video">
           <video autoplay="" muted="" loop="" id="mVideo" style="display:block;margin:auto" width="100%" height="100%">
-            <source src="@/assets/moon.mp4" type="video/mp4">
+            <source src="https://storage.cloud.google.com/artofthemoon/moon.mp4" type="video/mp4">
           </video>
           <div class="video-desc">
             <div class="title">

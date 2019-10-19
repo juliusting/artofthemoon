@@ -1,8 +1,5 @@
 <template>
-	<section v-inview:leave="audioEnd">
-        <div class="blast">
-        <img src="@/assets/blast1.gif">
-        </div>
+	<section v-inview:enter="audioStart" v-inview:leave="audioEnd">
 	</section>
 </template>
 
@@ -19,26 +16,33 @@ export default {
 	},
 	methods: {
         callbackBlastOff (resolve, reject, transcript) {
+			/*
             console.log(transcript)
             if (transcript.toLowerCase().trim().indexOf('blast off') > -1) {
+				console.log('success')
                 this.$util.getSpeechDestroy()
                 resolve()
             } else {
                 console.log('please try again')
-            }
-        },
+			}
+			*/
+			this.$util.getSpeechDestroy()
+			resolve(true)
+		},
+		async audioStart () {
+			let transcript = await this.$util.getSpeech(this.callbackBlastOff).catch(error => console.warn('ops =)'))
+
+			if (transcript) {
+				this.$util.playAudio('blast_off')
+			}
+		},
         audioEnd () {
-            this.$util.stopAudio('blast_off')
+			// this.$util.stopAudio('blast_off')
+			this.$util.getSpeechDestroy()
         }
     },
-	async created() {
-        AOS.init()
-        
-        let transcript = await this.$util.getSpeech(this.callbackBlastOff).catch(error => console.warn('ops =)'))
-
-		if (transcript) {
-            this.$util.playAudio('blast_off')
-		}
+	created() {
+		AOS.init()
 	}
 }
 </script>
@@ -46,7 +50,7 @@ export default {
 <style lang="scss" scoped>
 section {
 	background-color: black;
-	background-image: url('@/../../assets/blast.jpg');
+	background-image: url('https://storage.cloud.google.com/artofthemoon/blast1.gif');
     background-size: cover;
 }
 
