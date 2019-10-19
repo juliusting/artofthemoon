@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-	"start": "npm run serve",
-	"deploy": "source deploy.bash",
+    "start": "npm run serve",
+    "deploy": "source deploy.bash",
     "serve": "npx vue-cli-service serve",
     "build": "npx vue-cli-service build"
   },
