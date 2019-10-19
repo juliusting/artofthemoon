@@ -15,5 +15,9 @@
 
 body {
   width: 100%;
+  margin: 0;
+  color: white;
+  padding: 0;
+  overscroll-behavior: none;
 }
 </style>

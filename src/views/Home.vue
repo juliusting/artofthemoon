@@ -1,10 +1,38 @@
 <template>
-  <canvas ref="canvas" width="windowWidth" height="windowHeight"></canvas>
+  <div>
+    <canvas ref="canvas" width="windowWidth" height="windowHeight"></canvas>
+    <div class="content">
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+      <p class="right-side">hello!</p>
+    </div>
+  </div>
 </template>
 
 <script>
 const bg = new Image();
-bg.src = require('../assets/3.4.earth.png');
+bg.src = require("../assets/3.4.earth-min.png");
 
 export default {
   name: "canvas",
@@ -17,19 +45,17 @@ export default {
     draw: function() {
       this.windowWidth = window.innerWidth;
       this.windowHeight = window.innerHeight;
+      this.canvas.width = window.innerWidth;
+      this.canvas.height = window.innerHeight;
       this.ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-      this.ctx.drawImage(bg, window.innerWidth/2 - 250, window.innerHeight/2 - 250, 500, 500);
-      
-
-      // accurate
-      this.ctx.beginPath();
-      this.ctx.fillStyle = "#000";
-      this.ctx.font = "20px Verdana";
-      this.ctx.fillText("Size: " + window.innerWidth + ", " + window.innerHeight,
-        this.canvas.width / 2,
-        100
+      this.ctx.drawImage(
+        bg,
+        window.innerWidth / 2 - 250,
+        window.innerHeight / 2 - 250,
+        500,
+        500
       );
-      this.ctx.closePath();
+
       requestAnimationFrame(this.draw);
     }
   },
@@ -49,8 +75,16 @@ export default {
 </script>
 
 <style scoped>
-#canvas {
+canvas {
   position: fixed;
   top: 0;
+  left: 0;
+  background: black;
+  z-index: -3;
+}
+
+p {
+  color:white;
+  font-size:2em;
 }
 </style>
