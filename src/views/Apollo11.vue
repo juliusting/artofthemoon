@@ -91,7 +91,8 @@ export default {
 			SpeechRecognition: null,
 			audioSources: [
 				'near',
-				'cut_jfk'
+				'cut_jfk',
+				'blast_off'
 			]
 		}
 	},
