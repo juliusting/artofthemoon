@@ -69,6 +69,16 @@ export default {
     this.ctx.strokeStyle = "black";
     this.ctx.rect(0, 0, 200, 200);
     this.ctx.stroke();
+    var audio = new Audio(
+      "https://storage.cloud.google.com/artofthemoon/Speech%201.mp3"
+    );
+    audio.play();
+    setTimeout(() => {
+      audio.pause();
+    }, 10000);
+
+    //
+    // document.getElementsByTagName('body')[0].innerHTML +='<audio autoplay preload="auto" src="https://storage.cloud.google.com/artofthemoon/Speech%201.mp3" type="audio/mpeg"></audio>'
     this.draw();
   }
 };
@@ -84,7 +94,7 @@ canvas {
 }
 
 p {
-  color:white;
-  font-size:2em;
+  color: white;
+  font-size: 2em;
 }
 </style>
