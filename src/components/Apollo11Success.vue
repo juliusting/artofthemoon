@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section v-inview:enter="onEnter" v-inview:leave="onLeave" >
         <div class="cert">
 			<h2>Congratulation!</h2>
 			<h3>You had made it to the Moon!</h3>
@@ -8,6 +8,7 @@
 					<span style="font-family: cursive; font-weight: bold">Your Certificate</span>
 				</h4>
 				<p class="name"><span style="font-size: 3em">Neil Armstrong</span></p>
+				<a class="share"><span>Share</span></a>
 			</div>
 		</div>
 	</section>
@@ -24,6 +25,12 @@ export default {
 		}
 	},
 	methods: {
+		onEnter () {
+			this.$util.playAudio('onesmallstep')
+		},
+		onLeave () {
+			this.$util.stopAudio('onesmallstep')
+		}
 	},
 	created() {
 		AOS.init()
@@ -63,9 +70,17 @@ section {
 
 			.name {
 				padding: 5em 2em;
-				background-color: #414141;
+				background-color: #999999;
 				color: white;
 				font-family: 'Courier New', Courier, monospace;
+				font-weight: bold;
+			}
+
+			.share {
+				display: block;
+				padding: 2em 2em;
+				background-color: black;
+				color: white;
 				font-weight: bold;
 			}
 		}

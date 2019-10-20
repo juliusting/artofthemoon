@@ -111,7 +111,8 @@ export default {
 				'total_crew',
 				'earth',
 				'blast',
-				'land'
+				'land',
+				'onesmallstep'
 			]
 		}
 	},

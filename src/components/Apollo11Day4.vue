@@ -18,11 +18,15 @@ export default {
 		},
 		async onEnter () {
 			this.$util.playAudio('land')
-			let transcript = await this.$util.getSpeech(this.callbackEagle).catch(error => console.warn('ops =)'))
 
-			if (transcript) {
-				this.$util.playAudio('eagle')
-			}
+			setTimeout(async _ => {
+				console.log('start listening')
+				let transcript = await this.$util.getSpeech(this.callbackEagle).catch(error => console.warn('ops =)'))
+				console.log('listened')
+				if (transcript) {
+					this.$util.playAudio('eagle')
+				}
+			}, 6000)
 		},
 		onLeave () {
 			this.$util.stopAudio('eagle')
