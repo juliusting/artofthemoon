@@ -63,7 +63,7 @@ export default {
 						this.SpeechRecognition.maxAlternatives = 10
 						this.SpeechRecognition.continuous = true
 
-						this.SpeechRecognition.onresult = throttle(event => {
+						this.SpeechRecognition.onresult = debounce(event => {
 							let interimTranscript = ''
 							for (let i = event.resultIndex, len = event.results.length; i < len; i++) {
 								let transcript = event.results[i][0].transcript
@@ -74,8 +74,10 @@ export default {
 								}
 							}
 
+							console.log(interimTranscript)
+
 							callback(resolve, reject, interimTranscript)
-						}, 300, { leading: true, trailing: true })
+						}, 300)
 
 						this.SpeechRecognition.start()
 					})
@@ -87,10 +89,12 @@ export default {
 					this.SpeechRecognition = null
 				},
 				playAudio: filename => {
+					console.log(filename)
 					this.$refs[filename][0].play()
 					this.$refs[filename][0].volume = 1
 				},
 				stopAudio: filename => {
+					console.log(filename)
 					this.$refs[filename][0].pause()
 					this.$refs[filename][0].currentTime = 0
 				},

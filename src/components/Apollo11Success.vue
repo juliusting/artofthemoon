@@ -40,13 +40,18 @@ export default {
 
 <style lang="scss" scoped>
 section {
+	display: flex;
 	background-image: url('@/../../assets/manonmoon.jpg');
 	background-position: center;
 	background-size: cover;
 	background-color: black;
 	color: white;
 
+	height: 120vh;
+
 	.cert {
+		margin: auto;
+
 		h2,
 		h3 {
 			text-shadow: .1em .1em black;

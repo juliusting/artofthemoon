@@ -13,16 +13,19 @@ export default {
 	},
 	methods: {
 		callbackEagle (resolve, reject, transcript) {
-			this.$util.getSpeechDestroy()
-			resolve(true)
+			if (transcript.toLowerCase().trim().indexOf('land eagle') > -1) {
+				this.$util.getSpeechDestroy()
+				resolve(true)
+			} else {
+				console.warn('please try again')
+			}
 		},
 		async onEnter () {
 			this.$util.playAudio('land')
 
 			setTimeout(async _ => {
-				console.log('start listening')
 				let transcript = await this.$util.getSpeech(this.callbackEagle).catch(error => console.warn('ops =)'))
-				console.log('listened')
+
 				if (transcript) {
 					this.$util.playAudio('eagle')
 				}
@@ -30,7 +33,7 @@ export default {
 		},
 		onLeave () {
 			this.$util.stopAudio('eagle')
-			this.$util.playAudio('land')
+			this.$util.stopAudio('land')
 			this.$util.getSpeechDestroy()
 		}
 	},

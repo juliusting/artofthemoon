@@ -15,17 +15,13 @@ export default {
 		}
 	},
 	methods: {
-        callbackBlastOff (resolve, reject, transcript) {
-			/*
-            if (transcript.toLowerCase().trim().indexOf('blast off') > -1) {
-                this.$util.getSpeechDestroy()
-                resolve()
-            } else {
-                console.warn('please try again')
+		callbackBlastOff (resolve, reject, transcript) {
+			if (transcript.toLowerCase().trim().indexOf('blast off') > -1) {
+				this.$util.getSpeechDestroy()
+				resolve(true)
+			} else {
+				console.warn('please try again')
 			}
-			*/
-			this.$util.getSpeechDestroy()
-			resolve(true)
 		},
 		async onEnter () {
 			setTimeout(_ => {
@@ -55,7 +51,8 @@ export default {
 <style lang="scss" scoped>
 section {
 	background-color: black;
-	background-image: url('https://storage.cloud.google.com/artofthemoon/blast1.gif');
+	// background-image: url('https://storage.cloud.google.com/artofthemoon/blast1.gif');
+	background-image: url('@/../../assets/blast1.gif');
     background-size: 100% auto;
 }
 
