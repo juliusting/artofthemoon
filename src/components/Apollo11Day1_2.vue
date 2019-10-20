@@ -1,5 +1,5 @@
 <template>
-	<section v-inview:enter="audioStart" v-inview:leave="audioEnd">
+	<section v-inview:enter="onEnter" v-inview:leave="onLeave" v-inview:offset="200">
 	</section>
 </template>
 
@@ -27,15 +27,22 @@ export default {
 			this.$util.getSpeechDestroy()
 			resolve(true)
 		},
-		async audioStart () {
-			let transcript = await this.$util.getSpeech(this.callbackBlastOff).catch(error => console.warn('ops =)'))
+		async onEnter () {
+			setTimeout(_ => {
+				this.$util.playAudio('blast')
+			}, 1000)
 
-			if (transcript) {
-				this.$util.playAudio('blast_off')
-			}
+			setTimeout(async _ => {
+				let transcript = await this.$util.getSpeech(this.callbackBlastOff).catch(error => console.warn('ops =)'))
+
+				if (transcript) {
+					this.$util.playAudio('blast_off')
+				}
+			}, 5000)
 		},
-        audioEnd () {
+        onLeave () {
 			this.$util.stopAudio('blast_off')
+			this.$util.stopAudio('blast')
 			this.$util.getSpeechDestroy()
         }
     },

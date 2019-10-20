@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section v-inview:enter="onEnter" v-inview:leave="onLeave" v-inview:offset="-200">
 		<div style="position: relative; margin-top: 35vh; height: 65vh">
 			<article>
 				<div>
@@ -41,24 +41,13 @@
 				</div>
 			</article>
 		</div>
-		<!--
-		<div class="name">
-			<p class="as2">Michael Collins - command module pilot.</p>
-			<p class="as3">Edwin 'Buzz' Aldrin - lunar module pilot.</p>
-			<p class="as1">Neil Armstrong - Mission Commander.</p>
-		</div>
-		<div class="crew1">
-			<img src="@/assets/ast 1.png" alt="leftppl" class="a1" data-aos="fade-right">
-			<img src="@/assets/ast 3.png" alt="middleppl" class="a3">
-			<img src="@/assets/ast 2.png" alt="rightppl" class="a2" data-aos="fade-left">
-		</div>
-		-->
 	</section>
 </template>
 
 <script>
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+
 export default {
 	name: "apollo11Day1-1",
 	inject: ['$util'],
@@ -68,10 +57,10 @@ export default {
 		}
 	},
 	methods: {
-		audioStart () {
+		onEnter () {
 			this.$util.playAudio('total_crew')
 		},
-		audioEnd() {
+		onLeave () {
 			this.$util.stopAudio('total_crew')
 		}
 	},

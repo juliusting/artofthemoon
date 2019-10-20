@@ -24,7 +24,10 @@ export default {
 	methods: {
 		setHoldTimer () {
 			this.holdTimer = setTimeout(_ => {
-				this.$util.playAudio('near')
+				this.$util.playAudio('earth')
+				setTimeout(_ => {
+					this.$util.downVolume('near')
+				}, 2000)
 				this.destroyHoldTimer()
 			}, 1000)
 		},
@@ -33,11 +36,11 @@ export default {
 			this.holdTimer = null
 		},
 		onEnter () {
-			this.$util.playAudio('earth')
+			this.$util.playAudio('near')
 		},
 		onLeave () {
-			this.$util.stopAudio('near')
 			this.$util.stopAudio('earth')
+			this.$util.stopAudio('near')
 		},
 		onScroll2 (event) {
 			let container = window.pageYOffset || document.documentElement.scrollTop

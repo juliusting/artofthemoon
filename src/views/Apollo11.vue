@@ -88,10 +88,14 @@ export default {
 				},
 				playAudio: filename => {
 					this.$refs[filename][0].play()
+					this.$refs[filename][0].volume = 1
 				},
 				stopAudio: filename => {
 					this.$refs[filename][0].pause()
 					this.$refs[filename][0].currentTime = 0
+				},
+				downVolume: filename => {
+					this.$refs[filename][0].volume = .2
 				}
 			}
 		}
@@ -105,7 +109,9 @@ export default {
 				'blast_off',
 				'eagle',
 				'total_crew',
-				'earth'
+				'earth',
+				'blast',
+				'land'
 			]
 		}
 	},
@@ -114,6 +120,7 @@ export default {
 	methods: {
 	},
 	created() {
+
 	}
 }
 </script>

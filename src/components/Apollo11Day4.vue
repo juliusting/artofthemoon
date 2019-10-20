@@ -17,6 +17,7 @@ export default {
 			resolve(true)
 		},
 		async onEnter () {
+			this.$util.playAudio('land')
 			let transcript = await this.$util.getSpeech(this.callbackEagle).catch(error => console.warn('ops =)'))
 
 			if (transcript) {
@@ -25,6 +26,7 @@ export default {
 		},
 		onLeave () {
 			this.$util.stopAudio('eagle')
+			this.$util.playAudio('land')
 			this.$util.getSpeechDestroy()
 		}
 	},

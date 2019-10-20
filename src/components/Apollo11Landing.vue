@@ -11,7 +11,7 @@
 			</article>
 
 			<div class="video-desc">
-				<h1 data-aos="fade-up" data-aos-duration="1000">Apollo11</h1>
+				<h1 data-aos="fade-up" data-aos-duration="1000">Inspiration</h1>
 				<article data-aos="fade-zoom-in" data-aos-delay="1000" data-aos-duration="3000">
 					<div>Based on real mission</div>
 					<div>in</div>
