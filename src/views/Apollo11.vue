@@ -141,6 +141,7 @@ main {
 		scroll-snap-align: start;
 		height: 100vh;
 		overflow: hidden;
+		background-repeat:none;
 	}
 }
 
