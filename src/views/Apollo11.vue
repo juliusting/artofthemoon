@@ -1,9 +1,15 @@
 <template>
 	<main>
 		<div ref="block" class="getting_user_interacted">
-			<div>
-				<a v-on:click="start" data-aos="zoom-out">Start</a>
-			</div>
+			<form
+				v-on:submit.prevent="start"
+				style="padding: 1em; text-align: center">
+				<h1>What's your name? *</h1>
+				<div style="display: flex; max-width: 25em" data-aos="zoom-out">
+					<input ref="name" type="text" v-model="name" :placeholder="namePlaceholder" required autofocus>
+					<button type="submit">Start</button>
+				</div>
+			</form>
 		</div>
 		<section ref="block2"></section>
 		<!--Test/-->
@@ -112,6 +118,17 @@ export default {
 	},
 	data () {
 		return {
+			name: '',
+			namePlaceholder: '',
+			namePlaceholders: [
+				'Neil',
+				'Robert',
+				'Mark',
+				'Armstrong',
+				'Shelton',
+				'Riccobono'
+			],
+			namePlaceholdersTimer: null,
 			SpeechRecognition: null,
 			audioSources: [
 				'near',
@@ -128,11 +145,32 @@ export default {
 	},
 	methods: {
 		start () {
-			this.$refs.block.remove()
-			this.$refs.block2.remove()
-			document.body.scrollTop = 0
-			document.documentElement.scrollTop = 0
+			if (this.$refs.name.value) {
+				this.$refs.block.remove()
+				this.$refs.block2.remove()
+				document.body.scrollTop = 0
+				document.documentElement.scrollTop = 0
+
+				this.$store.dispatch('setName', this.name)
+			} else {
+				this.$refs.name.focus()
+			}
+
 		}
+	},
+	mounted () {
+		this.namePlaceholder = this.namePlaceholders[0]
+
+		this.namePlaceholdersTimer = setInterval(_ => {
+			let nextIndex = this.namePlaceholders.indexOf(this.namePlaceholder) + 1
+
+			nextIndex = nextIndex < this.namePlaceholders.length ? nextIndex : 0
+
+			this.namePlaceholder = this.namePlaceholders[nextIndex]
+		}, 2000)
+	},
+	destroyed () {
+		clearInterval(this.namePlaceholdersTimer)
 	}
 }
 </script>
@@ -162,11 +200,23 @@ main {
 	background-color: black;
 	color: white;
 
-	> div {
+	> form {
 		margin: auto
 	}
 
-	a {
+	input {
+		display: inline-block;
+		padding: .5em 1em;
+		border: .3em solid white;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 1.5em;
+		color: black;
+		line-height: 1.15;
+		width: 100%;
+	}
+
+	button {
 		display: inline-block;
 		padding: .5em 1em;
 		border: .3em solid white;
@@ -176,6 +226,8 @@ main {
 		color: white;
 		user-select: none;
 		cursor: pointer;
+
+		background-color: black;
 	}
 }
 

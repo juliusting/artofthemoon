@@ -13,6 +13,11 @@ export default {
 	name: 'App',
 	created () {
 		AOS.init()
+		if (window.location.protocol != "https:") { // manual redirect to https
+			if (window.location.hostname === 'localhost') return
+
+			window.location.href = window.location.href.replace('http', 'https')
+		}
 	}
 }
 </script>

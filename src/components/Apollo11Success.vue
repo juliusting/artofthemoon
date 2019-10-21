@@ -7,7 +7,7 @@
 				<h4 style="padding: 1em 0">
 					<span style="font-family: cursive; font-weight: bold">Your Certificate</span>
 				</h4>
-				<p class="name"><span style="font-size: 3em">Neil Armstrong</span></p>
+				<p class="name"><span style="font-size: 3em" v-text="$store.state.name"></span></p>
 				<a class="share"><span>Share</span></a>
 			</div>
 		</div>
