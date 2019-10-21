@@ -9,6 +9,7 @@ export default {
 	inject: ['$util'],
 	data () {
 		return {
+			timer: null
 		}
 	},
 	methods: {
@@ -23,7 +24,7 @@ export default {
 		async onEnter () {
 			this.$util.playAudio('land')
 
-			setTimeout(async _ => {
+			this.timer = setTimeout(async _ => {
 				let transcript = await this.$util.getSpeech(this.callbackEagle).catch(error => console.warn('ops =)'))
 
 				if (transcript) {
@@ -35,6 +36,8 @@ export default {
 			this.$util.stopAudio('eagle')
 			this.$util.stopAudio('land')
 			this.$util.getSpeechDestroy()
+			clearTimeout(this.timer)
+			this.timer = null
 		}
 	},
 	created() {

@@ -39,6 +39,7 @@ export default {
 			this.$util.playAudio('near')
 		},
 		onLeave () {
+			this.destroyHoldTimer()
 			this.$util.stopAudio('earth')
 			this.$util.stopAudio('near')
 		},
