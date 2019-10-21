@@ -51,9 +51,10 @@ export default {
 <style lang="scss" scoped>
 section {
 	background-color: black;
-	// background-image: url('https://storage.cloud.google.com/artofthemoon/blast1.gif');
-	background-image: url('@/../../assets/blast1.gif');
+	background-image: url('https://storage.cloud.google.com/artofthemoon/blast1.gif');
+	// background-image: url('@/../../assets/blast1.gif');
     background-size: 100% auto;
+	background-repeat: no-repeat
 }
 
 .blast {
