@@ -15,7 +15,8 @@
 						:tabindex="index+1"
 						tag="a"
 						:to="story.route"
-						v-text="story.name">
+						v-text="story.name"
+						data-aos="zoom-out">
 					</router-link>
 				</div>
 			</div>
@@ -104,6 +105,8 @@ main {
 					font-weight: bold;
 					font-size: 1.5em;
 					color: white;
+					user-select: none;
+					cursor: pointer;
 				}
 			}
 		}

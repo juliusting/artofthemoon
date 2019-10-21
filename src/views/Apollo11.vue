@@ -1,14 +1,13 @@
 <template>
 	<main>
-		<div class="block">
-
+		<div ref="block" class="getting_user_interacted">
+			<div>
+				<a v-on:click="start" data-aos="zoom-out">Start</a>
+			</div>
 		</div>
-		<audio v-for="source in audioSources" :key="source" :ref="source" preload="auto">
-			<source :src="require(`@/assets/audio/${source}.ogg`)" type="audio/ogg">
-			<source :src="require(`@/assets/audio/${source}.mp3`)" type="audio/mpeg">
-		</audio>
+		<section ref="block2"></section>
 		<!--Test/-->
-		<Apollo11Landing/>
+		<Apollo11Landing ref="tet"/>
 		<div class="separator"></div>
 		<Apollo11Day1/>
 		<div class="separator"></div>
@@ -20,6 +19,10 @@
 		<Apollo11Day4/>
 		<div class="separator"></div>
 		<Apollo11Success/>
+		<audio v-for="source in audioSources" :key="source" :ref="source" preload="auto">
+			<source :src="require(`@/assets/audio/${source}.ogg`)" type="audio/ogg">
+			<source :src="require(`@/assets/audio/${source}.mp3`)" type="audio/mpeg">
+		</audio>
 	</main>
 </template>
 
@@ -123,12 +126,13 @@ export default {
 			]
 		}
 	},
-	mounted () {
-	},
 	methods: {
-	},
-	created() {
-
+		start () {
+			this.$refs.block.remove()
+			this.$refs.block2.remove()
+			document.body.scrollTop = 0
+			document.documentElement.scrollTop = 0
+		}
 	}
 }
 </script>
@@ -145,6 +149,33 @@ main {
 		height: 100vh;
 		overflow: hidden;
 		background-repeat:none;
+	}
+}
+
+.getting_user_interacted {
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	z-index: 99;
+	background-color: black;
+	color: white;
+
+	> div {
+		margin: auto
+	}
+
+	a {
+		display: inline-block;
+		padding: .5em 1em;
+		border: .3em solid white;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 1.5em;
+		color: white;
+		user-select: none;
+		cursor: pointer;
 	}
 }
 
