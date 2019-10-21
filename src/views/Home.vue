@@ -4,7 +4,8 @@
 			<div class="menu">
 				<h1>Stories</h1>
 				<div class="desc">
-					For full experience, please allow access to device microphone
+					For full experience, please allow access to device microphone.
+					<p>And we recommend using desktop browser!</p>
 				</div>
 
 				<div
