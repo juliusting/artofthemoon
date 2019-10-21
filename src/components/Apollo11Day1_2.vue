@@ -16,7 +16,7 @@ export default {
 	},
 	methods: {
 		callbackBlastOff (resolve, reject, transcript) {
-			if (transcript.toLowerCase().trim().indexOf('blast off') > -1) {
+			if (transcript.toLowerCase().trim().split(' ').some(r => ['blast', 'off'].includes(r))) {
 				this.$util.getSpeechDestroy()
 				resolve(true)
 			} else {

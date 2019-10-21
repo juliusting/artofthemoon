@@ -14,7 +14,7 @@ export default {
 	},
 	methods: {
 		callbackEagle (resolve, reject, transcript) {
-			if (transcript.toLowerCase().trim().indexOf('land eagle') > -1) {
+			if (transcript.toLowerCase().trim().split(' ').some(r => ['land', 'eagle'].includes(r))) {
 				this.$util.getSpeechDestroy()
 				resolve(true)
 			} else {
