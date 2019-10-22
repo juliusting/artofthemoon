@@ -36,7 +36,7 @@
 						</div>
 					</div>
 					<div>
-						<img src="@/assets/images/ast 2.png" alt="Michael Collins" data-aos="fade-left" data-aos-delay="1000" data-aos-duration="1000" >
+						<img src="@/assets/images/ast 2.png" alt="Michael Collins" data-aos="fade-left" data-aos-delay="1000" data-aos-duration="1000">
 					</div>
 				</div>
 			</article>

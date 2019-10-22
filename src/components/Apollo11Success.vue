@@ -1,22 +1,70 @@
 <template>
 	<section v-inview:enter="onEnter" v-inview:leave="onLeave" >
-        <div class="cert">
+        <div class="wrapper">
 			<h2>Congratulation!</h2>
 			<h3>You had made it to the Moon!</h3>
-			<div class="box">
-				<h4 style="padding: 1em 0">
-					<span style="font-family: cursive; font-weight: bold">Your Certificate</span>
-				</h4>
-				<p class="name"><span style="font-size: 3em" v-text="$store.state.name"></span></p>
-				<a
-					class="share"
-					v-on:click="$ga.event({
-						eventCategory: 'social',
-						eventAction: 'share',
-						eventLabel: $store.state.name
-					})">
-					<span>Share</span>
-				</a>
+
+			<div class="certificate" data-aos="flip-down">
+				<h4><span style="font-size: 7em">🎉</span></h4>
+
+				<b style="font-size: 1.3em; text-decoration: underline">Your Certificate</b>
+				<p
+					class="name"
+					data-aos="fade-up"
+					data-aos-delay="300"
+					data-aos-duration="10000"
+					v-text="$store.state.name">
+				</p>
+
+				<social-sharing
+					:url="url_full_current"
+					title="Story of Apollo 11"
+					description="Interactive Story of Apollo 11 with sound"
+					hashtags="nasa,spaceappchallenge,hackathon,inspiration,story,blind,interactive,sound,voice"
+					twitter-user="Story of Apollo 11"
+					inline-template>
+					<div>
+						<network network="facebook">
+							<a
+								class="share"
+								data-aos="zoom-out"
+								data-aos-delay="300"
+								v-on:click="$ga.event({
+									eventCategory: 'social',
+									eventAction: 'share-facebook',
+									eventLabel: $store.state.name
+								})">
+								Facebook
+							</a>
+						</network>
+						<network network="linkedin">
+							<a
+								class="share"
+								data-aos="zoom-out"
+								data-aos-delay="300"
+								v-on:click="$ga.event({
+									eventCategory: 'social',
+									eventAction: 'share-linkedin',
+									eventLabel: $store.state.name
+								})">
+								linkedin
+							</a>
+						</network>
+						<network network="twitter">
+							<a
+								class="share"
+								data-aos="zoom-out"
+								data-aos-delay="300"
+								v-on:click="$ga.event({
+									eventCategory: 'social',
+									eventAction: 'share-twitter',
+									eventLabel: $store.state.name
+								})">
+								Twitter
+							</a>
+						</network>
+					</div>
+				</social-sharing>
 			</div>
 		</div>
 	</section>
@@ -31,7 +79,8 @@ export default {
 	components: {},
 	data () {
 		return {
-			isViewed: false
+			isViewed: false,
+			url_full_current: window.location.href
 		}
 	},
 	methods: {
@@ -45,7 +94,6 @@ export default {
 				})
 				this.isViewed = true
 			}
-
 		},
 		onLeave () {
 			this.$util.stopAudio('onesmallstep')
@@ -53,6 +101,8 @@ export default {
 	},
 	created() {
 		AOS.init()
+
+		console.log(this.url_full_current)
 	}
 }
 </script>
@@ -60,52 +110,58 @@ export default {
 <style lang="scss" scoped>
 section {
 	display: flex;
-	background-image: url('@/../../assets/images/manonmoon.jpg');
+	background-image: linear-gradient(rgba(0, 0, 0, .5), black), url('@/../../assets/images/manonmoon.jpg');
 	background-position: center;
 	background-size: cover;
 	background-color: black;
 	color: white;
 
-	height: 120vh;
+	height: auto !important;
+	min-height: 120vh;
 
-	.cert {
+	.wrapper {
 		margin: auto;
 
 		h2,
 		h3 {
 			text-shadow: .1em .1em black;
+			word-break: break-all;
 		}
 
 		h2 { font-size: 8em; font-weight: bold; margin: 0 }
 		h3 { font-size: 2em; font-weight: 600; font-family: 'Courier New', Courier, monospace }
 
-		.box {
-			background-color: rgba(255, 255, 255, 1);
-			color: #414141;
-			display: inline-block;
-			border-radius: 1em;
-			overflow: hidden;
-			box-shadow: 0 0 .5em .5em rgba(0, 0, 0, .25);
-			min-width: 30%;
-
-			h4, .name {
-				margin: 1em 0 0
-			}
+		.certificate {
+			margin: 2em auto;
+			padding: 2em 2em;
+			max-width: 30%;
+			background-color: white;
+			background-image: linear-gradient(#c4e0e5, #4ca1af);
+			color: black;
+			border-radius: .5em;
+			box-shadow: 0 0 1em rgba(0, 0, 0, 1);
 
 			.name {
-				padding: 5em 2em;
-				background-color: #999999;
-				color: white;
-				font-family: 'Courier New', Courier, monospace;
-				font-weight: bold;
+				padding: 0 1em 1em;
 			}
 
-			.share {
-				display: block;
-				padding: 2em 2em;
-				background-color: black;
-				color: white;
+			/deep/ a {
+				display: inline-block;
+				padding: .5em 1em;
+				border: .3em solid black;
+				text-decoration: none;
 				font-weight: bold;
+				font-size: 1.5em;
+				color: black;
+				user-select: none;
+				cursor: pointer;
+				min-width: 5em;
+				text-transform: uppercase;
+			}
+
+			/deep/ span:not(:first-of-type) {
+				display: block;
+				margin-top: 1em;
 			}
 		}
 	}

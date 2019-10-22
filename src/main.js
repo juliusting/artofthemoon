@@ -6,6 +6,7 @@ import './registerServiceWorker'
 
 import Inview from 'vueinview'
 import VueAnalytics from 'vue-analytics'
+import SocialSharing from 'vue-social-sharing'
 
 Vue.config.productionTip = false
 Vue.use(Inview)
@@ -18,6 +19,7 @@ Vue.use(VueAnalytics, {
 		sendHitTask: process.env.NODE_ENV === 'production'
 	}
 })
+Vue.use(SocialSharing)
 
 new Vue({
 	router,
