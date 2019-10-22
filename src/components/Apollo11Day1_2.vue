@@ -1,6 +1,7 @@
 <template>
 	<section v-inview:enter="onEnter" v-inview:leave="onLeave" v-inview:offset="200">
-		<div class="thevid"></div>
+		<video ref="vid1" src="@/assets/videos/blast1.mp4" loop muted></video>
+		<video ref="vid2" src="@/assets/videos/blast1.mp4" loop muted></video>
 	</section>
 </template>
 
@@ -26,6 +27,11 @@ export default {
 			}
 		},
 		async onEnter () {
+			this.$refs.vid1.currentTime = 0
+			this.$refs.vid2.currentTime = 0
+			this.$refs.vid1.play()
+			this.$refs.vid2.play()
+
 			setTimeout(_ => {
 				this.$util.getAudio('blast').onended = async _ => {
 					let transcript = await this.$util.getSpeech(this.callbackBlastOff).catch(error => console.warn('ops =)'))
@@ -58,15 +64,14 @@ export default {
 section {
 	background-color: black;
 
-	.thevid {
-		position: absolute;
-		height: 100%;
+	video {
 		width: 80%;
-		left: 10%;
+		height: 80%;
+		object-fit: cover;
 
-		background-image: url('@/../../assets/videos/blast1-optimized.gif');
-		background-size: contain;
-		background-position: top center;
+		&:not(:first-of-type) {
+			height: 20%;
+		}
 	}
 }
 

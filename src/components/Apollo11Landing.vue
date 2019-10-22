@@ -1,7 +1,7 @@
 <template>
 	<section v-inview:enter="onEnter">
 		<div class="video" data-aos="zoom-out" data-aos-delay="1000" data-aos-duration="15000" data-aos-easing="linear">
-			<video ref="moon" src="@/assets/videos/moon.mp4" loop></video>
+			<video ref="moon" src="@/assets/videos/moon.mp4" loop muted></video>
 		</div>
 		<div class="hero">
 			<article style="opacity: 0">
