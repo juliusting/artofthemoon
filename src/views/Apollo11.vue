@@ -22,6 +22,7 @@
 		<Apollo11Day1_2/>
 		<div class="separator"></div>
 		<Apollo11Day2/>
+		<div class="separator"></div>
 		<Apollo11Day4/>
 		<div class="separator"></div>
 		<Apollo11Success/>
@@ -86,12 +87,11 @@ export default {
 								}
 							}
 
-							console.log(interimTranscript)
-
 							callback(resolve, reject, interimTranscript)
 						}, 300)
 
 						this.SpeechRecognition.start()
+						console.log('👂🏼')
 					})
 				},
 				getSpeechDestroy () {
@@ -99,14 +99,14 @@ export default {
 						this.SpeechRecognition.stop()
 					}
 					this.SpeechRecognition = null
+					console.log('🙉')
 				},
+				getAudio: filename => this.$refs[filename][0],
 				playAudio: filename => {
-					console.log(filename)
 					this.$refs[filename][0].play()
 					this.$refs[filename][0].volume = 1
 				},
 				stopAudio: filename => {
-					console.log(filename)
 					this.$refs[filename][0].pause()
 					this.$refs[filename][0].currentTime = 0
 				},
@@ -152,6 +152,11 @@ export default {
 				document.documentElement.scrollTop = 0
 
 				this.$store.dispatch('setName', this.name)
+				this.$ga.event({
+					eventCategory: 'name',
+					eventAction: 'set',
+					eventLabel: this.name
+				})
 			} else {
 				this.$refs.name.focus()
 			}
@@ -168,6 +173,9 @@ export default {
 
 			this.namePlaceholder = this.namePlaceholders[nextIndex]
 		}, 2000)
+	},
+	created () {
+		this.$ga.page('/apollo11')
 	},
 	destroyed () {
 		clearInterval(this.namePlaceholdersTimer)
@@ -186,7 +194,6 @@ main {
 		scroll-snap-align: start;
 		height: 100vh;
 		overflow: hidden;
-		background-repeat:none;
 	}
 }
 
@@ -214,6 +221,10 @@ main {
 		color: black;
 		line-height: 1.15;
 		width: 100%;
+
+		&:focus {
+			outline: 0;
+		}
 	}
 
 	button {

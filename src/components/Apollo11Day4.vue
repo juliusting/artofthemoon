@@ -16,21 +16,21 @@ export default {
 		callbackEagle (resolve, reject, transcript) {
 			if (transcript.toLowerCase().trim().split(' ').some(r => ['land', 'eagle'].includes(r))) {
 				this.$util.getSpeechDestroy()
+				console.log('accepted', transcript)
 				resolve(true)
 			} else {
-				console.warn('please try again')
+				console.info('please try again')
 			}
 		},
 		async onEnter () {
-			this.$util.playAudio('land')
-
-			this.timer = setTimeout(async _ => {
+			this.$util.getAudio('land').onended = async _ => {
 				let transcript = await this.$util.getSpeech(this.callbackEagle).catch(error => console.warn('ops =)'))
 
 				if (transcript) {
 					this.$util.playAudio('eagle')
 				}
-			}, 6000)
+			}
+			this.$util.playAudio('land')
 		},
 		onLeave () {
 			this.$util.stopAudio('eagle')

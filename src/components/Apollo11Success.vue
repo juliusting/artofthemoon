@@ -8,7 +8,15 @@
 					<span style="font-family: cursive; font-weight: bold">Your Certificate</span>
 				</h4>
 				<p class="name"><span style="font-size: 3em" v-text="$store.state.name"></span></p>
-				<a class="share"><span>Share</span></a>
+				<a
+					class="share"
+					v-on:click="$ga.event({
+						eventCategory: 'social',
+						eventAction: 'share',
+						eventLabel: $store.state.name
+					})">
+					<span>Share</span>
+				</a>
 			</div>
 		</div>
 	</section>
@@ -19,14 +27,25 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 export default {
 	name: "apollo11Day1-1",
+	inject: ['$util'],
 	components: {},
 	data () {
 		return {
+			isViewed: false
 		}
 	},
 	methods: {
 		onEnter () {
 			this.$util.playAudio('onesmallstep')
+			if (!this.isViewed) {
+				this.$ga.event({
+					eventCategory: 'view',
+					eventAction: 'section',
+					eventLabel: 'apollo11-success'
+				})
+				this.isViewed = true
+			}
+
 		},
 		onLeave () {
 			this.$util.stopAudio('onesmallstep')

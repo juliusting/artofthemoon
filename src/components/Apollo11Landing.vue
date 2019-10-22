@@ -1,8 +1,6 @@
 <template>
 	<section>
 		<div class="video" data-aos="zoom-out" data-aos-delay="1000" data-aos-duration="15000" data-aos-easing="linear">
-			<!-- <video src="https://storage.cloud.google.com/artofthemoon/moon.mp4" autoplay loop></video> -->
-			<!-- <video src="@/assets/moon.mp4" autoplay loop></video> -->
 			<img src="@/assets/moon.gif" autoplay loop style="width:100%;object-fit: contain;" />
 		</div>
 		<div class="hero">

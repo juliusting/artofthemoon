@@ -5,9 +5,19 @@ import store from './store'
 import './registerServiceWorker'
 
 import Inview from 'vueinview'
+import VueAnalytics from 'vue-analytics'
 
 Vue.config.productionTip = false
 Vue.use(Inview)
+Vue.use(VueAnalytics, {
+	id: 'UA-119362979-2',
+	autoTracking: {
+		screenview: true
+	},
+	debug: {
+		sendHitTask: true
+	}
+})
 
 new Vue({
 	router,

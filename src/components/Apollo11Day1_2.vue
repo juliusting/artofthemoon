@@ -1,5 +1,6 @@
 <template>
 	<section v-inview:enter="onEnter" v-inview:leave="onLeave" v-inview:offset="200">
+		<div class="thevid"></div>
 	</section>
 </template>
 
@@ -18,25 +19,25 @@ export default {
 		callbackBlastOff (resolve, reject, transcript) {
 			if (transcript.toLowerCase().trim().split(' ').some(r => ['blast', 'off'].includes(r))) {
 				this.$util.getSpeechDestroy()
+				console.log('accepted', transcript)
 				resolve(true)
 			} else {
-				console.warn('please try again')
+				console.info('please try again')
 			}
 		},
 		async onEnter () {
 			setTimeout(_ => {
+				this.$util.getAudio('blast').onended = async _ => {
+					let transcript = await this.$util.getSpeech(this.callbackBlastOff).catch(error => console.warn('ops =)'))
+
+					if (transcript) {
+						this.$util.playAudio('blast_off')
+					}
+				}
 				this.$util.playAudio('blast')
 			}, 1000)
-
-			setTimeout(async _ => {
-				let transcript = await this.$util.getSpeech(this.callbackBlastOff).catch(error => console.warn('ops =)'))
-
-				if (transcript) {
-					this.$util.playAudio('blast_off')
-				}
-			}, 5000)
 		},
-        onLeave () {
+		onLeave () {
 			this.$util.stopAudio('blast_off')
 			this.$util.stopAudio('blast')
 			this.$util.getSpeechDestroy()
@@ -51,10 +52,17 @@ export default {
 <style lang="scss" scoped>
 section {
 	background-color: black;
-	background-image: url('https://storage.cloud.google.com/artofthemoon/blast1.gif');
-	// background-image: url('@/../../assets/blast1.gif');
-    background-size: 100% auto;
-	background-repeat: no-repeat
+
+	.thevid {
+		position: absolute;
+		height: 100%;
+		width: 80%;
+		left: 10%;
+
+		background-image: url('@/../../assets/videos/blast1-optimized.gif');
+		background-size: contain;
+		background-position: top center;
+	}
 }
 
 .blast {

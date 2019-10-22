@@ -56,6 +56,9 @@ export default {
 		starfield.start()
 
 		this.getMedia({ audio: true })
+	},
+	created () {
+		this.$ga.page('/')
 	}
 }
 </script>
