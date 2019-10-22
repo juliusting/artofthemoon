@@ -6,7 +6,7 @@
     "start": "npm run serve",
     "deploy": "source deploy.bash",
     "serve": "npx vue-cli-service serve",
-    "build": "npx vue-cli-service build"
+    "build": "NODE_ENV=production npx vue-cli-service build"
   },
   "dependencies": {
     "aos": "^3.0.0-beta.6",

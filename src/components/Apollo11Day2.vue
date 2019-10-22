@@ -27,6 +27,11 @@ export default {
 				this.$util.playAudio('earth')
 				setTimeout(_ => {
 					this.$util.downVolume('near')
+					this.$ga.event({
+						eventCategory: 'interaction',
+						eventAction: 'tap-hold',
+						eventLabel: 'apollo11day2'
+					})
 				}, 2000)
 				this.destroyHoldTimer()
 			}, 1000)

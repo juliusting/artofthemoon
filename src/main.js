@@ -10,12 +10,12 @@ import VueAnalytics from 'vue-analytics'
 Vue.config.productionTip = false
 Vue.use(Inview)
 Vue.use(VueAnalytics, {
-	id: 'UA-119362979-2',
+	id: 'UA-119362979-3',
 	autoTracking: {
 		screenview: true
 	},
 	debug: {
-		sendHitTask: true
+		sendHitTask: process.env.NODE_ENV === 'production'
 	}
 })
 

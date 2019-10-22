@@ -153,8 +153,8 @@ export default {
 
 				this.$store.dispatch('setName', this.name)
 				this.$ga.event({
-					eventCategory: 'name',
-					eventAction: 'set',
+					eventCategory: 'user',
+					eventAction: 'input-name',
 					eventLabel: this.name
 				})
 			} else {
@@ -175,7 +175,7 @@ export default {
 		}, 2000)
 	},
 	created () {
-		this.$ga.page('/apollo11')
+		this.$ga.page(this.$router)
 	},
 	destroyed () {
 		clearInterval(this.namePlaceholdersTimer)

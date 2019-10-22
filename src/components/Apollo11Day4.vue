@@ -28,6 +28,11 @@ export default {
 
 				if (transcript) {
 					this.$util.playAudio('eagle')
+					this.$ga.event({
+						eventCategory: 'interaction',
+						eventAction: 'speech-recognization',
+						eventLabel: `Land Eagle: ${transcript}`
+					})
 				}
 			}
 			this.$util.playAudio('land')

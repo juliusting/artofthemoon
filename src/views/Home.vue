@@ -58,7 +58,7 @@ export default {
 		this.getMedia({ audio: true })
 	},
 	created () {
-		this.$ga.page('/')
+		this.$ga.page(this.$router)
 	}
 }
 </script>

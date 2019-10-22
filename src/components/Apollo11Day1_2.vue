@@ -32,6 +32,11 @@ export default {
 
 					if (transcript) {
 						this.$util.playAudio('blast_off')
+						this.$ga.event({
+							eventCategory: 'interaction',
+							eventAction: 'speech-recognization',
+							eventLabel: `Blast Off: ${transcript}`
+						})
 					}
 				}
 				this.$util.playAudio('blast')

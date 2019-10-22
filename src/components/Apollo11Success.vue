@@ -39,8 +39,8 @@ export default {
 			this.$util.playAudio('onesmallstep')
 			if (!this.isViewed) {
 				this.$ga.event({
-					eventCategory: 'view',
-					eventAction: 'section',
+					eventCategory: 'page-section',
+					eventAction: 'view',
 					eventLabel: 'apollo11-success'
 				})
 				this.isViewed = true
