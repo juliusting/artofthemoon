@@ -10,7 +10,7 @@
 						</div>
 					</div>
 					<div>
-						<img src="@/assets/ast 1.png" alt="Neil Armstrong" data-aos="fade-right" data-aos-delay="500" data-aos-duration="1000">
+						<img src="@/assets/images/ast 1.png" alt="Neil Armstrong" data-aos="fade-right" data-aos-delay="500" data-aos-duration="1000">
 					</div>
 				</div>
 			</article>
@@ -23,7 +23,7 @@
 						</div>
 					</div>
 					<div>
-						<img src="@/assets/ast 3.png" alt="Edwin 'Buzz' Aldrin" data-aos="fade-down" data-aos-duration="3000">
+						<img src="@/assets/images/ast 3.png" alt="Edwin 'Buzz' Aldrin" data-aos="fade-down" data-aos-duration="3000">
 					</div>
 				</div>
 			</article>
@@ -36,7 +36,7 @@
 						</div>
 					</div>
 					<div>
-						<img src="@/assets/ast 2.png" alt="Michael Collins" data-aos="fade-left" data-aos-delay="1000" data-aos-duration="1000" >
+						<img src="@/assets/images/ast 2.png" alt="Michael Collins" data-aos="fade-left" data-aos-delay="1000" data-aos-duration="1000" >
 					</div>
 				</div>
 			</article>

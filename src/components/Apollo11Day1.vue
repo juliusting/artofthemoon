@@ -2,7 +2,7 @@
 	<section v-inview:enter="onEnter" v-inview:leave="onLeave">
 		<div style="display: flex; position: absolute; height: 100%; width: 100%; overflow: hidden">
 			<div style="margin: auto 1em -2em auto; width: 23em">
-				<img src="@/assets/presidentspeech.png" alt="president" style="width: 100%">
+				<img src="@/assets/images/presidentspeech.png" alt="president" style="width: 100%">
 			</div>
 		</div>
 		<div class="s" data-aos="zoom-in" data-aos-duration="1000">
@@ -32,7 +32,7 @@ export default {
 
 <style lang="scss" scoped>
 section {
-	background-image: url('@/../../assets/stars3.png');
+	background-image: url('@/../../assets/images/stars3.png');
 	background-size: cover;
 	background-position: center;
 	background-color: black;

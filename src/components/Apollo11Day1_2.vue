@@ -8,8 +8,8 @@
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 export default {
-    name: "apollo11Day1-2",
-    inject: ['$util'],
+	name: "apollo11Day1-2",
+	inject: ['$util'],
 	components: {},
 	data () {
 		return {
@@ -46,8 +46,8 @@ export default {
 			this.$util.stopAudio('blast_off')
 			this.$util.stopAudio('blast')
 			this.$util.getSpeechDestroy()
-        }
-    },
+		}
+	},
 	created() {
 		AOS.init()
 	}
@@ -71,6 +71,6 @@ section {
 }
 
 .blast {
-    margin: 0em 0em 0em -57em;
+	margin: 0em 0em 0em -57em;
 }
 </style>

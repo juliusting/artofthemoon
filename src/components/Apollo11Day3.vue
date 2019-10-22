@@ -22,6 +22,6 @@ export default {
 <style lang="scss" scoped>
 section {
 	background-color: black;
-	background-image: url('@/../../assets/moonsurface.png');
+	background-image: url('@/../../assets/images/moonsurface.png');
 }
 </style>

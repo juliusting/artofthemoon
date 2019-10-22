@@ -54,7 +54,7 @@ export default {
 <style lang="scss" scoped>
 section {
 	background-color: black;
-	background-image: url('@/../../assets/images/eagle.gif');
+	background-image: url('@/../../assets/videos/eagle.gif');
 	background-position: center;
 	background-size: cover;
 }

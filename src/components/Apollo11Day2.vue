@@ -2,7 +2,7 @@
 	<section ref="sceneDay2" v-inview:enter="onEnter" v-inview:leave="onLeave">
 		<div style="display: flex">
 			<div ref="earth" style="margin: 0 auto; position: relative">
-				<img src="@/assets/3.4.earth.png" style="width: 100%">
+				<img src="@/assets/images/3.4.earth.png" style="width: 100%">
 			</div>
 		</div>
 
@@ -78,7 +78,7 @@ section {
 	color: white;
 
 	.moon {
-		background-image: url('@/../../assets/moonsurface.png');
+		background-image: url('@/../../assets/images/moonsurface.png');
 		background-size: 100% 30%;
 		background-repeat: no-repeat;
 		background-position: bottom center;

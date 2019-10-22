@@ -1,12 +1,12 @@
 <template>
-	<section>
+	<section v-inview:enter="onEnter">
 		<div class="video" data-aos="zoom-out" data-aos-delay="1000" data-aos-duration="15000" data-aos-easing="linear">
-			<img src="@/assets/moon.gif" autoplay loop style="width:100%;object-fit: contain;" />
+			<video ref="moon" src="@/assets/videos/moon.mp4" loop></video>
 		</div>
 		<div class="hero">
 			<article style="opacity: 0">
 				<div class="arrow">
-					<img src="@/assets/down-arrow.svg" alt="down-arrow">
+					<img src="@/assets/images/down-arrow.svg" alt="down-arrow">
 				</div>
 			</article>
 
@@ -21,7 +21,7 @@
 
 			<article data-aos="zoom-in" data-aos-delay="1500" data-aos-offset="0">
 				<div class="arrow">
-					<img src="@/assets/down-arrow.svg" alt="down-arrow">
+					<img src="@/assets/images/down-arrow.svg" alt="down-arrow">
 				</div>
 			</article>
 		</div>
@@ -33,6 +33,11 @@ export default {
 	name: "apollo11Landing",
 	data () {
 		return {
+		}
+	},
+	methods: {
+		onEnter () {
+			console.log(this.$refs.moon.play())
 		}
 	}
 };

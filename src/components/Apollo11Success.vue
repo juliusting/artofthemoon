@@ -60,7 +60,7 @@ export default {
 <style lang="scss" scoped>
 section {
 	display: flex;
-	background-image: url('@/../../assets/manonmoon.jpg');
+	background-image: url('@/../../assets/images/manonmoon.jpg');
 	background-position: center;
 	background-size: cover;
 	background-color: black;
