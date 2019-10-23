@@ -37,7 +37,7 @@ export default {
 	},
 	methods: {
 		onEnter () {
-			console.log(this.$refs.moon.play())
+			this.$refs.moon.play()
 		}
 	}
 };
