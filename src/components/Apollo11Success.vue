@@ -128,13 +128,13 @@ section {
 			word-break: break-all;
 		}
 
-		h2 { font-size: 8em; font-weight: bold; margin: 0 }
-		h3 { font-size: 2em; font-weight: 600; font-family: 'Courier New', Courier, monospace }
+		h2 { font-size: 8em; font-size: 10vw; font-weight: bold; margin: 0 }
+		h3 { font-size: 2em; font-size: 5vw; font-weight: 600; font-family: 'Courier New', Courier, monospace }
 
 		.certificate {
 			margin: 2em auto;
 			padding: 2em 2em;
-			max-width: 30%;
+			max-width: 25em;
 			background-color: white;
 			background-image: linear-gradient(#c4e0e5, #4ca1af);
 			color: black;

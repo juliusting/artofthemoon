@@ -45,6 +45,7 @@ section {
 
 	span {
 		font-size: 5em;
+		font-size: 8vw;
 	}
 }
 </style>

@@ -76,6 +76,7 @@ section {
 			h1 {
 				margin: 0 0 .25em;
 				font-size: 8em;
+				font-size: 10vw;
 				font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 			}
 
